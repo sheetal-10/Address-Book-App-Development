@@ -3,7 +3,6 @@ package com.bridgelabz.AddressBookDevelopment.controller;
 import com.bridgelabz.AddressBookDevelopment.dto.AddressBookDto;
 import com.bridgelabz.AddressBookDevelopment.entity.AddressBook;
 import com.bridgelabz.AddressBookDevelopment.service.AddressBookService;
-import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +22,7 @@ public class AddressBookController {
 
     /**
      * Function to receive get request from client
+     *
      * @return list of Address
      */
     @GetMapping(value = "/addresses")
@@ -32,6 +32,7 @@ public class AddressBookController {
 
     /**
      * Function to get request from client
+     *
      * @param id unique id of the address
      * @return address with the unique id
      */
@@ -42,27 +43,29 @@ public class AddressBookController {
 
     /**
      * Function to receive get request from client
+     *
      * @param addressBookDto address data from client
      * @return added address in the database
      */
     @PostMapping("/addAddress")
-    public AddressBook addAddress(@RequestBody AddressBookDto addressBookDto){
+    public AddressBook addAddress(@RequestBody AddressBookDto addressBookDto) {
         return addressBookService.addAddress(addressBookDto);
     }
 
     /**
      * Function to receive put request from client
-     * @param id
-     * @param addressBookDto
+     *
+     * @param id unique id of the person
      * @return updated address
      */
     @PutMapping(value = "/updateAddress/{id}")
-    public AddressBook updateAddress(@PathVariable int id, @RequestBody AddressBookDto addressBookDto){
-        return addressBookService.updateAddress(id, addressBookDto);
+    public AddressBook updateAddressBook(@PathVariable int id, @RequestBody AddressBookDto addressBookDto) {
+        return addressBookService.updateAddressBook(id, addressBookDto);
     }
 
     /**
      * Function to receive delete request from client
+     *
      * @param id unique id of the person
      * @return String message displaying status of operation
      */
