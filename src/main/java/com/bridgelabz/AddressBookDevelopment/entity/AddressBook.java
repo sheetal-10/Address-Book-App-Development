@@ -3,6 +3,7 @@ package com.bridgelabz.AddressBookDevelopment.entity;
 import lombok.Data;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Layer that contains entities in database
@@ -13,5 +14,8 @@ import javax.persistence.Entity;
 @Data
 @Entity
 public class AddressBook {
-
+    @Id
+    private int id;
+    private String name;
+    private String address;
 }
