@@ -7,6 +7,8 @@ import org.apache.tomcat.jni.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Layer that receives various HTTP requests from client
  * @author - Sheetal Panda
@@ -21,13 +23,21 @@ public class AddressBookController {
 
     /**
      * Function to receive get request from client
-     * @param fname
-     * @param lname
-     * @return greeting message
+     * @return list of Address
      */
-    @GetMapping(value="greeting")
-    public String greeting(@RequestParam String fname, @RequestParam String lname) {
-        return "Hello : " + fname + " " + lname;
+    @GetMapping(value = "/addresses")
+    public List<AddressBook> addresses() {
+        return addressBookService.addresses();
+    }
+
+    /**
+     * Function to get request from client
+     * @param id unique id of the address
+     * @return address with the unique id
+     */
+    @GetMapping(value = "/getAddressById")
+    public AddressBook getAddressById(@RequestParam int id) {
+        return addressBookService.getAddressById(id);
     }
 
     /**
