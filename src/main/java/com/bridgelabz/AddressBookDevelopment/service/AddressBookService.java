@@ -22,23 +22,70 @@ public class AddressBookService {
     @Autowired
     private AddressBookRepository addressBookRepository;
 
-    public AddressBook updateAddress(int id, AddressBookDto addressBookDto) {
-        return null;
-    }
-
-    public String deleteAddress(int id) {
-        return null;
-    }
-
-    public AddressBook addAddress(AddressBookDto addressBookDto) {
-        return null;
-    }
-
+    /**
+     * Function to get list of addresses from database
+     * @return list of addresses
+     */
     public List<AddressBook> addresses() {
+        return addressBookRepository.findAll();
+    }
+
+    /**
+     * Function to get a particular address stored in database
+     * @param id unique id of the person whose address stored
+     * @return address with unique id
+     */
+    public AddressBook getAddressById(int id) {
+        Optional<AddressBook> optionalAddressBook = addressBookRepository.findById(id);
+        if (optionalAddressBook.isPresent()) {
+            return optionalAddressBook.get();
+        }
         return null;
     }
 
-    public AddressBook getAddressById(int id) {
+    /**
+     * Function to add address to the database
+     * @param addressBookDto address data from client
+     * @return added address
+     */
+    public AddressBook addAddress(AddressBookDto addressBookDto) {
+        AddressBook addressBook = new AddressBook();
+        addressBook.setName(addressBookDto.getName());
+        addressBook.setAddress(addressBookDto.getAddress());
+        addressBook.setState(addressBookDto.getState());
+        return addressBookRepository.save(addressBook);
+    }
+
+    /**
+     * Function to edit the available address in the database
+     * @param id of the id whose address stored
+     * @param addressBookDto  data from client
+     * @return updated address of the person
+     */
+    public AddressBook updateAddress(int id, AddressBookDto addressBookDto) {
+        Optional<AddressBook> optionalAddressBook = addressBookRepository.findById(id);
+        if (optionalAddressBook.isPresent()) {
+            AddressBook addressBook = optionalAddressBook.get();
+            addressBook.setName(addressBookDto.getName());
+            addressBook.setAddress(addressBookDto.getAddress());
+            addressBook.setState(addressBookDto.getState());
+            return addressBook;
+        }
         return null;
     }
+
+    /**
+     * Function to particular address from database and delete it
+     * @param id of the person whose address stored
+     * @return String message displaying status of operation
+     */
+    public String deleteAddress(int id) {
+        Optional<AddressBook> optionalAddressBook = addressBookRepository.findById(id);
+        if (optionalAddressBook.isPresent()) {
+            addressBookRepository.delete(optionalAddressBook.get());
+            return "Record deleted successfully";
+        }
+        return "Record does not exists with this id : " + id;
+    }
+
 }
