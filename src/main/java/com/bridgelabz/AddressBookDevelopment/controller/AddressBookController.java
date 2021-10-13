@@ -22,7 +22,6 @@ public class AddressBookController {
 
     /**
      * Function to receive get request from client
-     *
      * @return list of Address
      */
     @GetMapping(value = "/addresses")
@@ -32,7 +31,6 @@ public class AddressBookController {
 
     /**
      * Function to get request from client
-     *
      * @param id unique id of the address
      * @return address with the unique id
      */
@@ -43,7 +41,6 @@ public class AddressBookController {
 
     /**
      * Function to receive get request from client
-     *
      * @param addressBookDto address data from client
      * @return added address in the database
      */
@@ -54,7 +51,6 @@ public class AddressBookController {
 
     /**
      * Function to receive put request from client
-     *
      * @param id unique id of the person
      * @return updated address
      */
@@ -65,7 +61,6 @@ public class AddressBookController {
 
     /**
      * Function to receive delete request from client
-     *
      * @param id unique id of the person
      * @return String message displaying status of operation
      */
