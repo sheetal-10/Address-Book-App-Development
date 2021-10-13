@@ -16,4 +16,5 @@ import lombok.Setter;
 public class AddressBookDto {
     private String name;
     private String address;
+    private String state;
 }
