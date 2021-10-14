@@ -34,7 +34,7 @@ public class AddressBookController {
      * @param id unique id of the address
      * @return address with the unique id
      */
-    @GetMapping(value = "/getAddressById")
+    @GetMapping(value = "/get-address-by-id")
     public AddressBook getAddressById(@RequestParam int id) {
         return addressBookService.getAddressById(id);
     }
@@ -44,7 +44,7 @@ public class AddressBookController {
      * @param addressBookDto address data from client
      * @return added address in the database
      */
-    @PostMapping("/addAddress")
+    @PostMapping("/add-address")
     public AddressBook addAddress(@RequestBody AddressBookDto addressBookDto) {
         return addressBookService.addAddress(addressBookDto);
     }
@@ -54,7 +54,7 @@ public class AddressBookController {
      * @param id unique id of the person
      * @return updated address
      */
-    @PutMapping(value = "/updateAddress/{id}")
+    @PutMapping(value = "/update-address/{id}")
     public AddressBook updateAddressBook(@PathVariable int id, @RequestBody AddressBookDto addressBookDto) {
         return addressBookService.updateAddressBook(id, addressBookDto);
     }
@@ -64,7 +64,7 @@ public class AddressBookController {
      * @param id unique id of the person
      * @return String message displaying status of operation
      */
-    @DeleteMapping(value = "/deleteAddress")
+    @DeleteMapping(value = "/delete-address")
     public String deleteAddress(@RequestParam int id) {
         return addressBookService.deleteAddress(id);
     }

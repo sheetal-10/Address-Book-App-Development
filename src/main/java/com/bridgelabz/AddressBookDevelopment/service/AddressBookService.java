@@ -2,6 +2,7 @@ package com.bridgelabz.AddressBookDevelopment.service;
 
 import com.bridgelabz.AddressBookDevelopment.dto.AddressBookDto;
 import com.bridgelabz.AddressBookDevelopment.entity.AddressBook;
+import com.bridgelabz.AddressBookDevelopment.exception.CustomException;
 import com.bridgelabz.AddressBookDevelopment.repository.AddressBookRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +86,8 @@ public class AddressBookService {
             addressBookRepository.delete(optionalAddressBook.get());
             return "Record deleted successfully";
         }
-        return "Record does not exists with this id : " + id;
+        throw new CustomException("Record does not exists with this id : " + id);
+       // return "Record does not exists with this id : " + id;
     }
 
 }

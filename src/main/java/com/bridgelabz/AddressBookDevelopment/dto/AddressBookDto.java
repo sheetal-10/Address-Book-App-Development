@@ -11,8 +11,6 @@ import lombok.Setter;
  * @since - 13/10/2021
  */
 @Data
-@Getter
-@Setter
 public class AddressBookDto {
     private String name;
     private String address;
