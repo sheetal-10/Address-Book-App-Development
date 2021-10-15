@@ -5,7 +5,7 @@ import com.bridgelabz.AddressBookDevelopment.entity.AddressBook;
 import com.bridgelabz.AddressBookDevelopment.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.List;
 
 /**
@@ -14,6 +14,7 @@ import java.util.List;
  * @version - 0.0.1
  * @since - 13/10/2021
  */
+@RequestMapping("/Api")
 @RestController
 public class AddressBookController {
 
